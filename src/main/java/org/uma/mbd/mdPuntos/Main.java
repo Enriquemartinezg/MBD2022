@@ -1,2 +1,4 @@
-package org.uma.mbd.mdPuntos;public class Main {
+package org.uma.mbd.mdPuntos;
+
+public class Main {
 }

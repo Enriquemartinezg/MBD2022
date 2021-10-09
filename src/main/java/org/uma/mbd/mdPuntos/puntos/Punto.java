@@ -1,2 +1,4 @@
-package org.uma.mbd.mdPuntos.puntos;public class Punto {
+package org.uma.mbd.mdPuntos.puntos;
+
+public class Punto {
 }

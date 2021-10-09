@@ -7,11 +7,11 @@ public class Jarra {
         contenido = 0;
     }
 
-    public double getCapacidad() {
+    public int getCapacidad() {
         return capacidad;
     }
 
-    public double getContenido() {
+    public int getContenido() {
         return contenido;
     }
 
