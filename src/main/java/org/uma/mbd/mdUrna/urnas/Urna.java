@@ -1,6 +1,7 @@
 package org.uma.mbd.mdUrna.urnas;
 
 import java.awt.*;
+import java.util.NoSuchElementException;
 import java.util.Random;
 
 public class Urna {
@@ -30,18 +31,21 @@ public class Urna {
 
     static public enum ColorBola{Blanca, Negra};
 
-   /* public ColorBola extraerBola() {
+    public ColorBola extraerBola() {
         ColorBola sacaBola = null;
         int n = alea.nextInt(totalBolas());
 
-        while (totalBolas() > 0) {
-            if (n <= blancas) {
+        if (totalBolas() > 0) {
+            if (n < blancas) {
                 sacaBola = ColorBola.Blanca;
                 blancas--;
             } else {
                 sacaBola = ColorBola.Negra;
                 negras--;
             }
+        }else{
+            throw new NoSuchElementException("No hay bolas en la urna");
         }
-    }*/
+        return sacaBola;
+    }
 }

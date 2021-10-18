@@ -1,7 +1,11 @@
 package org.uma.mbd.mdRectas;
 
+import org.uma.mbd.mdRectas.rectas.Implicita;
 import org.uma.mbd.mdRectas.rectas.Punto;
 import org.uma.mbd.mdRectas.rectas.Recta;
+import org.uma.mbd.mdRectas.rectas.Vector;
+
+import java.sql.SQLOutput;
 
 public class EjRectas {
 	public static void main(String [] args) {
@@ -27,5 +31,22 @@ public class EjRectas {
 		System.out.println("Paralela a " + rBase + " que pasa por " + p1 + " es: " + rPara);
         Punto inter = rPerpe.interseccionCon(rPara);
         System.out.println("Intersección de " + rPerpe + " con " + rPara + " es: " + inter );
+
+		// Comprobación que salta el RunTimeException
+		Vector v = new Vector(p2);
+		Punto p5 = new Punto(0,3);
+		Recta paralela1 = new Recta(v,p1);
+		Recta paralela2 = new Recta(v, p5);
+		//Punto interParalela = paralela1.interseccionCon(paralela2); //Paralelas
+
+		// Comprobación paralelaA
+		System.out.println(paralela1.paralelaA(paralela2));
+
+		// Comprobación paralelaPor
+		Punto p6 = new Punto(1,7);
+		Recta paralela3 = paralela1.paralelaPor(p6);
+		System.out.println(paralela3);
+		System.out.println(paralela1.paralelaA(paralela3));
+
 	}
 }
