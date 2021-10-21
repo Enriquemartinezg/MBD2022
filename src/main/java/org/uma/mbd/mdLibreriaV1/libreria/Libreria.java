@@ -83,4 +83,19 @@ public class Libreria {
         salida += "]";
         return salida;
     }
+
+    /*
+    @Override
+    public String toString(){
+        StringBuilder salida = new StringBuilder("[");
+        for ( int i = 0; i < numLibros; i++){
+            salida += libros[i];
+            if (i < numLibros-1)
+                salida += ", ";
+        }
+        salida += "]";
+        return salida;
+    }
+
+     */
 }

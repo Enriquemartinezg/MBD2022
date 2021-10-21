@@ -8,6 +8,8 @@ public class Main {
         System.out.println("Se crea tren con  5 vagones de 20 ton "+ tren);
         tren.carga(71);
         System.out.println("Se cargan 71 ton " + tren);
+        tren.carga(35);
+        System.out.println("Se cargan 35 ton " + tren);
         tren.gasta(63);
         System.out.println("Se gastan 63 ton " + tren);
         tren.carga(38);
