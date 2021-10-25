@@ -22,14 +22,14 @@ public class Tren{
     public void carga(int ton){
         int i = 0;
         int sobra = ton;
-        while(sobra > 0 && i < vagones.size()){
-            sobra = vagones.get(i).carga(sobra);
-            vagones.set(i,vagones.get(i));
+        while(sobra > 0 && i < vagones.size()){ //mientras siga habiendo ton y estemos por debajo de nVagones
+            sobra = vagones.get(i).carga(sobra); //cargamos vagones y sobreescribimos lo que sobra
+            vagones.set(i,vagones.get(i)); //modificamos el vagon con el vago ya cargado
             i++;
         }
 
-        while(sobra > 0){
-            vagones.add(new Vagon(capComun));
+        while(sobra > 0){ // hemos sobrepasado el numero de vagones del constructor
+            vagones.add(new Vagon(capComun)); // añadimos un vagon
             sobra = vagones.get(i).carga(sobra);
             vagones.set(i,vagones.get(i));
         }
@@ -38,12 +38,12 @@ public class Tren{
     public void gasta(int ton) {
         int i = 0;
         int queda = ton;
-        while (queda > 0 && i < vagones.size() ) {
-            queda = vagones.get(i).descarga(queda);
-            vagones.set(i, vagones.get(i));
+        while (queda > 0 && i < vagones.size() ) { //mientras haya para consumir y estemos por debajo de nVagones
+            queda = vagones.get(i).descarga(queda); // consumimos lo del vagon y sobreescribimos lo que queda
+            vagones.set(i, vagones.get(i)); // modificamos el vagon con la nueva carga
             i++;
         }
-        if (queda > 0) {
+        if (queda > 0) { // no se puede consumir mas de lo que hay en los vagones
             throw new IllegalArgumentException("El numero de toneladas es mayor que el valor permitido");
         }
     }

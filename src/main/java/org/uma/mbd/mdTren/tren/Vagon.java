@@ -12,20 +12,20 @@ public class Vagon {
     public int carga(int ton){
         int cabe = capacidad-carga;
         int sobra = ton - (cabe);
-        if (ton <= cabe)
-            carga += ton;
-        else
-            carga = capacidad;
+        if (ton <= cabe) // cabe ton en el vagon
+            carga += ton; // carga es la carga que hubiera + ton
+        else // no cabe ton
+            carga = capacidad; // vagon se llena
         return ton <= cabe ? 0: sobra;
     }
 
     public int descarga(int ton){
-        int queda = ton - carga;
-        if(ton < carga) {
-            carga -= ton;
+        int queda = ton - carga; // cantidad que se queda del consumo
+        if(ton < carga) { //se quema menos de lo que hay en vagon
+            carga -= ton; // carga que hubiera menos consumo
             return 0;
-        }else {
-            carga = 0;
+        }else { //se quema mas de lo que hay en el vagon
+            carga = 0; // vagon vacio
             return queda;
         }
     }

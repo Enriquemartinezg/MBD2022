@@ -6,9 +6,9 @@ public class Main {
     public static void main(String[] args) {
         Tren tren = new Tren(5, 20);
         System.out.println("Se crea tren con  5 vagones de 20 ton "+ tren);
-        tren.carga(71);
+        tren.carga(55);
         System.out.println("Se cargan 71 ton " + tren);
-        tren.carga(35);
+        tren.carga(8);
         System.out.println("Se cargan 35 ton " + tren);
         tren.gasta(63);
         System.out.println("Se gastan 63 ton " + tren);
