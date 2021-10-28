@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class TestMasterMind {
 
 	public static void main(String[] args) throws MasterMindException {
-		MasterMind juego = new MasterMind();
+		MasterMind juego = new MasterMind(6);
 //		MasterMindMemoria juego = new MasterMindMemoria();
 		
 //		System.out.println(juego.getSecreto());
