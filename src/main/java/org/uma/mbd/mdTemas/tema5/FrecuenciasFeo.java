@@ -33,6 +33,13 @@ public class FrecuenciasFeo {
             lista.add(i);
         }
     */
+        /*
+        for (int i=0; i< args.length; i++){
+        String palabra = args[i];
+        List<Integer> lista = map.computeIfAbsent(palabra, k -> new ArrayList<>());
+        lista.add(i);
+         */
+
         System.out.println(map);
     }
 }

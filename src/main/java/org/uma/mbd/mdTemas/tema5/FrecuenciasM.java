@@ -1,12 +1,13 @@
 package org.uma.mbd.mdTemas.tema5;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class FrecuenciasM {
 	public static void main(String[] args) {
-		Map<String, Integer> frecs = new TreeMap<>();
+		Map<String, Integer> frecs = new HashMap<>();
 		for (String arg : args) {
 			// Incr. la frec. De arg., o la pone a 1 si es la 1ª
 			int hay = frecs.getOrDefault(arg,0);

@@ -41,12 +41,15 @@ public class Club {
     }
 
     protected void hacerAmigos(){
-        while(hayCoincidendia()){
+        while(hayCoincidendia(List.of(1,2,3))){
         }
     }
 
     private static boolean hayCoincidendia(List<Integer> lista){
         lista = new ArrayList<>();
-        for(int i=0; i<socios.size(); i++)
+        for(int i=0; i<lista.size(); i++){
+            lista.set(i, i);
+        }
+        return false;
     }
 }

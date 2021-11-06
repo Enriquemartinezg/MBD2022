@@ -30,7 +30,7 @@ public class Persona implements Comparable<Persona>{
 
     @Override
     public int hashCode(){
-        Objects.hashCode(nombre.toLowerCase());
+        return Objects.hashCode(nombre.toLowerCase());
     }
 
     @Override
