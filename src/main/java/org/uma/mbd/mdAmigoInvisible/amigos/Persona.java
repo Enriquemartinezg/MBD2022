@@ -1,4 +1,4 @@
-package org.uma.mbd.mdAmigoInvisible.amigoinvisible;
+package org.uma.mbd.mdAmigoInvisible.amigos;
 
 import java.util.Objects;
 
@@ -40,6 +40,6 @@ public class Persona implements Comparable<Persona>{
 
     @Override
     public String toString(){
-        return nombre+" --> "+amigo.nombre;
+        return amigo == null ? nombre+" --> sin amigo" : nombre+" --> "+amigo.nombre;
     }
 }

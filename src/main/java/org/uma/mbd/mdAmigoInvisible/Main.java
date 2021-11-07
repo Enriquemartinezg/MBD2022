@@ -1,5 +1,5 @@
 package org.uma.mbd.mdAmigoInvisible;
-/*
+
 import org.uma.mbd.mdAmigoInvisible.amigos.AmigoException;
 import org.uma.mbd.mdAmigoInvisible.amigos.Club;
 import org.uma.mbd.mdAmigoInvisible.amigos.ClubManager;
@@ -25,4 +25,3 @@ public class Main {
 	}
 }
 
-*/

@@ -1,4 +1,4 @@
-package org.uma.mbd.mdAmigoInvisible.amigoinvisible;
+package org.uma.mbd.mdAmigoInvisible.amigos;
 
 public class AmigoException extends RuntimeException{
     public AmigoException(){

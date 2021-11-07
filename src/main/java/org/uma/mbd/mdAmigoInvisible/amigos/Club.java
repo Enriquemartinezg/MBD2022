@@ -1,9 +1,9 @@
-package org.uma.mbd.mdAmigoInvisible.amigoinvisible;
+package org.uma.mbd.mdAmigoInvisible.amigos;
 
-import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
@@ -11,8 +11,6 @@ public class Club {
     protected List<Persona> socios;
 
     public Club(){
-        if(socios.size() <= 2)
-            throw new AmigoException("No se pueden asoaciar amigos con menos de 3 interantes");
         socios = new ArrayList<>();
     }
 
@@ -26,8 +24,7 @@ public class Club {
         try(Scanner sc = new Scanner(linea)){
             sc.useDelimiter(delim);
             String nombre = sc.next();
-            Persona per = new Persona(nombre);
-            creaSocioDesdeString(per.getNombre());
+            creaSocioDesdeString(nombre);
         } catch (InputMismatchException e) {
             System.err.println("ERROR: Valor numérico erróneo: " + linea);
         } catch (NoSuchElementException e) {
@@ -41,15 +38,39 @@ public class Club {
     }
 
     protected void hacerAmigos(){
-        while(hayCoincidendia(List.of(1,2,3))){
+        List<Integer> posAmigos = new ArrayList<>();
+        for(int i=0; i<posAmigos.size(); i++){
+            posAmigos.add(i);
+        }
+        while(hayCoincidendia(posAmigos)){
+            Collections.shuffle(posAmigos);
+        }
+
+        for(int i=0; i<socios.size(); i++){
+            socios.get(i).setAmigo(socios.get(posAmigos.get(i)));
         }
     }
 
     private static boolean hayCoincidendia(List<Integer> lista){
-        lista = new ArrayList<>();
-        for(int i=0; i<lista.size(); i++){
-            lista.set(i, i);
+        List<Integer> duplicada = new ArrayList<>(lista);
+        for(int i=0; i< lista.size(); i++){
+            if(lista.get(i) == duplicada.get(i))
+                return true;
         }
         return false;
+    }
+
+    public void presentaAmigo(String fSalida) throws FileNotFoundException{
+        try(PrintWriter pw = new PrintWriter(fSalida)){
+            presentaAmigos(pw);
+        }
+    }
+
+    public void presentaAmigos(PrintWriter pw) {
+        Set<Persona> salida = new TreeSet(socios);
+        pw.println("Amigos Invisible");
+        for (Persona p : salida) {
+            pw.println(p);
+        }
     }
 }
