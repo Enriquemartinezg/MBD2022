@@ -18,20 +18,17 @@ public class ClubManager {
     public ClubManager setEntrada(String fEntrada, String delim){
         this.fEntrada = fEntrada;
         this.delimitadores = delim;
-        ClubManager cEnt = new ClubManager(club);
-        return cEnt;
+        return this;
     }
 
     public ClubManager setSalida(String salida){
         this.fSalida = salida;
-        ClubManager cSal = new ClubManager(club);
-        return cSal;
+        return this;
     }
 
     public ClubManager setConsola(boolean consola){
         this.consola = consola;
-        ClubManager cCon = new ClubManager(club);
-        return cCon;
+        return this;
     }
 
     private void verify(){
@@ -43,13 +40,15 @@ public class ClubManager {
     }
 
     public void build() throws IOException, FileNotFoundException{
-        PrintWriter pw = new PrintWriter(System.out, true);
         verify();
         club.lee(fEntrada,delimitadores);
         club.hacerAmigos();
-        club.presentaAmigo(fSalida);
+        if(consola){
+            club.presentaAmigos(new PrintWriter(System.out, true));
+        }
+        if(fSalida!= null){
+            club.presentaAmigo(fSalida);
 
-        if(consola)
-            club.presentaAmigos(pw);
+        }
     }
 }

@@ -23,8 +23,10 @@ public class Club {
     public void leeSocios(String linea, String delim){
         try(Scanner sc = new Scanner(linea)){
             sc.useDelimiter(delim);
-            String nombre = sc.next();
-            creaSocioDesdeString(nombre);
+            while(sc.hasNext()){
+                String nombre = sc.next();
+                creaSocioDesdeString(nombre);
+            }
         } catch (InputMismatchException e) {
             System.err.println("ERROR: Valor numérico erróneo: " + linea);
         } catch (NoSuchElementException e) {
@@ -39,7 +41,7 @@ public class Club {
 
     protected void hacerAmigos(){
         List<Integer> posAmigos = new ArrayList<>();
-        for(int i=0; i<posAmigos.size(); i++){
+        for(int i=0; i<socios.size(); i++){
             posAmigos.add(i);
         }
         while(hayCoincidendia(posAmigos)){
@@ -50,11 +52,19 @@ public class Club {
             socios.get(i).setAmigo(socios.get(posAmigos.get(i)));
         }
     }
-
+/*
     private static boolean hayCoincidendia(List<Integer> lista){
-        List<Integer> duplicada = new ArrayList<>(lista);
+        int i = 0;
+        while ( i<lista.size() && i!=lista.get(i)){
+            i++;
+        }
+        return i<lista.size();
+    }
+
+ */
+    private static boolean hayCoincidendia(List<Integer> lista){ //Funciona pero ocurre algo raro
         for(int i=0; i< lista.size(); i++){
-            if(lista.get(i) == duplicada.get(i))
+            if(lista.get(i) == i)
                 return true;
         }
         return false;
@@ -68,7 +78,7 @@ public class Club {
 
     public void presentaAmigos(PrintWriter pw) {
         Set<Persona> salida = new TreeSet(socios);
-        pw.println("Amigos Invisible");
+        pw.println("Amigos Invisibles");
         for (Persona p : salida) {
             pw.println(p);
         }

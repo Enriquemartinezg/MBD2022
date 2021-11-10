@@ -2,10 +2,10 @@ package org.uma.mbd.mdAmigoInvisible.amigos;
 
 import java.util.*;
 
-public class ClubParejas extends Club{
+public class ClubPareja extends Club{
     private Set<Pareja> parejas;
 
-    public ClubParejas(){
+    public ClubPareja(){
         parejas = new HashSet<>();
     }
 
@@ -25,8 +25,8 @@ public class ClubParejas extends Club{
     @Override
     protected void hacerAmigos() {
         super.hacerAmigos();
-        for(int i=0; i<socios.size(); i++){
-            Pareja amigosInv = new Pareja(socios.get(i), socios.get(i).getAmigo());
+        for(Persona p : socios){
+            Pareja amigosInv = new Pareja(p, p.getAmigo());
             if(parejas.contains(amigosInv))
                 hacerAmigos();
         }

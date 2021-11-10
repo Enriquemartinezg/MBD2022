@@ -14,7 +14,8 @@ public class Pareja {
     @Override
     public boolean equals (Object obj){
         return obj instanceof Pareja p &&
-                una.equals(p.otra) && p.una.equals(otra);
+                ((una.equals(p.otra) && p.una.equals(otra)) ||
+                        una.equals(p.una) && p.otra.equals(otra));
     }
 
     @Override
