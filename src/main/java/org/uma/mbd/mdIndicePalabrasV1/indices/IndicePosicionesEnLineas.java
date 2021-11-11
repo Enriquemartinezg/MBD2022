@@ -30,6 +30,8 @@ public class IndicePosicionesEnLineas extends Indice{
                     }
                     cont++;
                 }
+            }catch(InputMismatchException e){
+                System.err.println("ERROR: Se ha introducido un elemento incorrecto: " + i+1);
             }
         }
     }

@@ -23,13 +23,16 @@ public class Indice1aLinea extends Indice{
                 new TreeSet<>(noSignificativas.stream().map(String::toLowerCase).collect(Collectors.toSet()));
 
         for(int i=0; i<texto.size();i++){
-            Scanner sc = new Scanner(texto.get(i));
-            sc.useDelimiter(delimitadores);
-            while (sc.hasNext()) {
-                String palabra = sc.next();
-                if (!noSig.contains(palabra.toLowerCase())) {
-                    indice.putIfAbsent(palabra.toLowerCase(), i+1);
+            try(Scanner sc = new Scanner(texto.get(i))){
+                sc.useDelimiter(delimitadores);
+                while (sc.hasNext()) {
+                    String palabra = sc.next();
+                    if (!noSig.contains(palabra.toLowerCase())) {
+                        indice.putIfAbsent(palabra.toLowerCase(), i + 1);
+                    }
                 }
+            }catch(InputMismatchException e){
+                System.err.println("ERROR: Se ha introducido un elemento incorrecto: " + i+1);
             }
         }
     }
