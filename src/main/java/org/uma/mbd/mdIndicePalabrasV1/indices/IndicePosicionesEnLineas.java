@@ -39,7 +39,12 @@ public class IndicePosicionesEnLineas extends Indice{
         for(Map.Entry<String,Map<Integer,Set<Integer>>> palabra : indice.entrySet()){
             String clave = palabra.getKey();
             Map<Integer,Set<Integer>> lineas = palabra.getValue();
-            System.out.println(clave+" \t\t "+lineas);
+            System.out.println(clave+"\t\t");
+            for(Map.Entry<Integer,Set<Integer>> l : lineas.entrySet()){
+                int linea = l.getKey();
+                Set<Integer> posicion = l.getValue();
+                System.out.println(linea+"\t"+posicion);
+            }
         }
     }
 }
