@@ -10,7 +10,7 @@ public class EjIndice {
 		List.of("A", "buen", "con", "de", "ha", "hubiera",
 				"la", "NO", "pero", "Por", "porque", "qué",
 				"si", "tenía", "una", "y");
-	Indice cp = new Indice1aLinea();
+	Indice cp = new IndicePosicionesEnLineas();
 	// Indice cp = new IndiceLineas();
 	// Indice cp = new IndicePosicionesEnLineas();
 	cp.agregarLinea("Guerra tenía una jarra y Parra tenía una perra, "

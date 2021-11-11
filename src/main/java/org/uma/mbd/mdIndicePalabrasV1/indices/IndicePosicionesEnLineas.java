@@ -1,13 +1,12 @@
 package org.uma.mbd.mdIndicePalabrasV1.indices;
 
 import java.util.*;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-public class IndiceLineas extends Indice{
-    private Map<String, Set<Integer>> indice;
+public class IndicePosicionesEnLineas extends Indice{
+    private Map<String, Map<Integer, Set<Integer>>> indice;
 
-    public IndiceLineas(){
+    public IndicePosicionesEnLineas(){
         super();
         indice = new TreeMap<>();
     }
@@ -18,14 +17,18 @@ public class IndiceLineas extends Indice{
                 new TreeSet<>(noSignificativas.stream().map(String::toLowerCase).collect(Collectors.toSet()));
 
         for(int i=0; i<texto.size(); i++){
+            int cont = 0;
             try(Scanner sc = new Scanner(texto.get(i))){
                 sc.useDelimiter(delimitadores);
                 while(sc.hasNext()){
                     String palabra = sc.next();
                     if(!noSig.contains(palabra.toLowerCase())){
-                        Set<Integer> indices = indice.computeIfAbsent(palabra.toLowerCase(),k -> new TreeSet<>());
-                        indices.add(i+1);
+                        Map<Integer,Set<Integer>> indices =
+                                indice.computeIfAbsent(palabra.toLowerCase(), k -> new TreeMap<>());
+                        Set<Integer> apareceEnPosicion = indices.computeIfAbsent(i+1,y -> new TreeSet<>());
+                        apareceEnPosicion.add(cont+1);
                     }
+                    cont++;
                 }
             }
         }
@@ -33,9 +36,9 @@ public class IndiceLineas extends Indice{
 
     @Override
     public void presentarIndiceConsola() {
-        for(Map.Entry<String,Set<Integer>> palabra : indice.entrySet()){
+        for(Map.Entry<String,Map<Integer,Set<Integer>>> palabra : indice.entrySet()){
             String clave = palabra.getKey();
-            Set<Integer> lineas = palabra.getValue();
+            Map<Integer,Set<Integer>> lineas = palabra.getValue();
             System.out.println(clave+" \t\t "+lineas);
         }
     }
