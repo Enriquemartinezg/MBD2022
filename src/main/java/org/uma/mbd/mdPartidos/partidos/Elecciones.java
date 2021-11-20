@@ -1,12 +1,11 @@
 package org.uma.mbd.mdPartidos.partidos;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
+import java.util.*;
 
 public class Elecciones {
     private List<Partido> partidos;
@@ -36,6 +35,27 @@ public class Elecciones {
         for(String linea : Files.readAllLines(Paths.get(nombreFichero))){
             Partido p = stringToPartido(linea);
             partidos.add(p);
+        }
+    }
+
+    public Map<Partido, Integer> generaResultados(CriterioSeleccion cs, int numEsc){
+        Map<Partido,Integer> escaños = cs.ejecuta(partidos,numEsc);
+        return escaños;
+    }
+
+    public void presentaResultados(String nombreFichero, Map<Partido,Integer> map) throws FileNotFoundException {
+        try(PrintWriter pw = new PrintWriter(nombreFichero)){
+            presentaResultados(pw, map);
+        }
+    }
+
+    public void presentaResultados(PrintWriter pw, Map<Partido,Integer> map){
+        for(Map.Entry<Partido,Integer> partido : map.entrySet()){
+            Partido p = partido.getKey();
+            int escaños = partido.getValue();
+            if(escaños == 0)
+                pw.println(p.getNombre()+" : "+p.getVotos()+" , Sin representación");
+            pw.println(p.getNombre()+" : "+p.getVotos()+" , "+escaños);
         }
     }
 }
