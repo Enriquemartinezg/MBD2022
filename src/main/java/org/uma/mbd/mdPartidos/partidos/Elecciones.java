@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class Elecciones {
-    private List<Partido> partidos;
+    private List<Partido> partidos = new ArrayList<>();
 
     static private Partido stringToPartido(String dato){
         try(Scanner sc = new Scanner(dato)){

@@ -1,9 +1,6 @@
 package org.uma.mbd.mdPartidos.partidos;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Token implements Comparable<Token>{
     private Partido partido;
@@ -32,16 +29,21 @@ public class Token implements Comparable<Token>{
 
     public static Set<Token> seleccioneTokens(Set<Token> tks, int numEsc){
        Set<Token> tokens = new TreeSet<>();
-        Iterator<Token> it = tks.iterator();
-        int i = 0;
-       while(i< numEsc) {
+       Iterator<Token> it = tks.iterator();
+       for(int i=0; i<numEsc; i++)
            tokens.add(it.next());
-           i++;
-       }
        return tokens;
     }
 
     public static Map<Partido, Integer> generaResultados(Set<Token> tks){
-
+        Map<Partido,Integer> estanPartidos = new HashMap<>();
+        for(Token t : tks){
+            if(estanPartidos.containsKey(t.getPartido())){
+                estanPartidos.put(t.getPartido(),estanPartidos.get(t.getPartido())+1);
+            }else{
+                estanPartidos.put(t.getPartido(),1);
+            }
+        }
+        return estanPartidos;
     }
 }

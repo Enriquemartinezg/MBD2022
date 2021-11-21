@@ -48,7 +48,6 @@ public class ClubManager {
         }
         if(fSalida!= null){
             club.presentaAmigo(fSalida);
-
         }
     }
 }
